@@ -19,14 +19,14 @@ public class RMIClient {
             System.setProperty(RMI_HOSTNAME, hostName);
             Service service = (Service) Naming.lookup(SERVICE_PATH);
 
-            String str = service.pollElem();
-
-            int num = countLines(str);
-            if (str == null) {
-                System.out.println("Received none!");
-            } else {
-                System.out.println("Received: " + num);
-                service.processElemInQueue(num);
+            while (true){
+                String str = service.pollElem();
+                if (str == null) {
+                    System.out.println("Received none!");
+                    break;
+                } else {
+                    service.processElemInQueue(countLines(str));
+                }
             }
         }
         catch (Exception ex) {
@@ -51,6 +51,7 @@ public class RMIClient {
                 sc.nextLine();
             }
         }
+        System.out.println(str + " contains lines: " + countLines);
         return countLines;
     }
 

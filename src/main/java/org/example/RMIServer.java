@@ -27,7 +27,7 @@ public class RMIServer {
             Service service = new ServiceImpl();
 
             AtomicInteger countLines = new AtomicInteger();
-            Path path = Paths.get("src/main/java/org/example/task_1");
+            Path path = Paths.get("/Users/amira/Downloads/RMIExample/src/main/java/org/example/task_1");
             Files.walk(path).forEach(path1 -> {
                 File file = path1.toFile();
                 if (file.isFile()) {

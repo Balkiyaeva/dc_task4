@@ -37,9 +37,11 @@ public class ServiceImpl extends UnicastRemoteObject implements Service {
     @Override
     public void processElemInQueue(Integer integer) throws RemoteException {
         numbers.add(integer);
-        if (queue.isEmpty()){
-            sumOfAll();
+        if (!queue.isEmpty()) {
+            System.out.println(queue);
+            return;
         }
+        sumOfAll();
     }
 
     public static void sumOfAll(){
